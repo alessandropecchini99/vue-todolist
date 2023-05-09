@@ -6,13 +6,13 @@ Questa volta però ogni todo sarà un oggetto, formato da due proprietà:
 MILESTONE 1
 Stampare all'interno di una lista HTML un item per ogni todo.
 Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
-MILESTONE 2
+MILESTONE 2 ----- FATTO
 Visualizzare a fianco ad ogni item una "x": cliccando su di essa, il todo viene rimosso dalla lista.
-MILESTONE 3
+MILESTONE 3 ----- FATTO
 Predisporre un campo di input testuale e un pulsante "aggiungi": cliccando sul pulsante, il testo digitato viene letto e utilizzato per creare un nuovo todo, che quindi viene aggiunto alla lista dei todo esistenti.
 Bonus:
-1- oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il todo alla lista
-2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa) */
+1- oltre al click sul pulsante, intercettare anche il tasto ENTER per aggiungere il todo alla lista ----- FATTO
+2- cliccando sul testo dell'item, invertire il valore della proprietà done del todo corrispondente (se done era uguale a false, impostare true e viceversa) ----- FATTO */
 
 const app = Vue.createApp({
     data() {
@@ -34,8 +34,12 @@ const app = Vue.createApp({
                 this.newTask = ``;
                 this.error = false;
             } else {
+                this.newTask = ``;
                 this.error = true;
             }
+        },
+        deleteItem(index) {
+            this.arrToDo.splice(index, 1);
         }
     }
 });

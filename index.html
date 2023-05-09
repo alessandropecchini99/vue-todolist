@@ -36,9 +36,9 @@
 
       <div class="taskContainer">
         <ul v-if="arrToDo != 0">
-          <li class="task" v-for="todo in arrToDo">
-            {{ todo }}
-            <i class="bi bi-x-square"></i>
+          <li class="task" v-for="(todo, i) in arrToDo">
+            {{ todo }} {{i}}
+            <i @click="deleteItem(i)" class="bi bi-x-square"></i>
           </li>
         </ul>
         <h2 v-else>Nessuna Task! 😎</h2>

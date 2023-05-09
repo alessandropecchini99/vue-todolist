@@ -72,5 +72,6 @@ img {
 }
 
 .taskContainer i:hover {
-    background-color: black;
+    cursor: pointer;
+    color: grey;
 }
