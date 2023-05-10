@@ -28,6 +28,7 @@ const app = Vue.createApp({
     methods:  {
         addArrToDo() {
             let cleanTask = this.newTask.text.trim();
+            console.log(cleanTask)
             if (cleanTask != ``) {
                 this.arrToDo.unshift(this.newTask);
                 this.newTask = {
@@ -36,9 +37,9 @@ const app = Vue.createApp({
                 };
                 this.error = false;
             } else {
-                this.newTask = ``;
+                this.newTask.text = ``;
                 this.error = true;
-            }
+            };
         },
         deleteItem(index) {
             this.arrToDo.splice(index, 1);
