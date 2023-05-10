@@ -23,21 +23,32 @@
 
       <div class="logoContainer">
         <img src="logo.png" alt="logo Boolean">
-        <h1 style="text-align: center; margin: 0px;">TO DO LIST</h1>
+        <h1 style="text-align: center; margin: 0px;">📝 TO DO LIST ✅</h1>
       </div>
       
+
       <form @submit.prevent class="newTask">
-        <input v-model="newTask" type="text" placeholder="inserire nuova Task">
+
+        <input 
+        v-model="newTask.text" 
+        type="text" placeholder="inserire nuova Task"
+        >
         <button @click="addArrToDo">Aggiungi</button>
         <div v-show="error" class="error text-center">
           <small style="color: red;">Inserire almeno 1 carattere</small>
         </div>
+
       </form>
+
 
       <div class="taskContainer">
         <ul v-if="arrToDo != 0">
-          <li class="task" v-for="(todo, i) in arrToDo">
-            {{ todo }} {{i}}
+          <li  
+          :class="{ checked: this.arrToDo[i].check == true }" 
+          v-for="(todo, i) in arrToDo" 
+          :key="todo"
+          >
+            <span @click="toCheck(i)" style="cursor: pointer; width: 100%; text-align: left;"> {{ todo.text }} </span>
             <i @click="deleteItem(i)" class="bi bi-x-square"></i>
           </li>
         </ul>

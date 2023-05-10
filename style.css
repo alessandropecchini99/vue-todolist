@@ -58,6 +58,10 @@ img {
     text-align: center;
 }
 
+.checked {
+    text-decoration: line-through;
+}
+
 .taskContainer ul {
     list-style-type: none;
     padding: 0;

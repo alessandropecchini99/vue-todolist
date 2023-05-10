@@ -3,7 +3,7 @@ Rifare l'esercizio della to do list.
 Questa volta però ogni todo sarà un oggetto, formato da due proprietà:
 - text, una stringa che indica il testo del todo
 - done, un booleano (true/false) che indica se il todo è stato fatto oppure no
-MILESTONE 1
+MILESTONE 1 ----- FATTO
 Stampare all'interno di una lista HTML un item per ogni todo.
 Se la proprietà done è uguale a true, visualizzare il testo del todo sbarrato.
 MILESTONE 2 ----- FATTO
@@ -18,20 +18,22 @@ const app = Vue.createApp({
     data() {
         return {
             error: false,
-            newTask: ``,
-            arrToDo: [
-                `fare gli esercizi`,
-                `insultare simo`,
-                `fargli anche la cacca sul balcone`
-            ],
+            newTask: {
+                text: ``,
+                check: false
+            },
+            arrToDo: [],
         };
     },
     methods:  {
         addArrToDo() {
-            let cleanTask = this.newTask.trim();
+            let cleanTask = this.newTask.text.trim();
             if (cleanTask != ``) {
-                this.arrToDo.unshift(cleanTask);
-                this.newTask = ``;
+                this.arrToDo.unshift(this.newTask);
+                this.newTask = {
+                    text: ``,
+                    check: false
+                };
                 this.error = false;
             } else {
                 this.newTask = ``;
@@ -40,6 +42,14 @@ const app = Vue.createApp({
         },
         deleteItem(index) {
             this.arrToDo.splice(index, 1);
+        },
+        toCheck(index) {
+            if (this.arrToDo[index].check == true) {
+                console.log(`true`);
+            } else {
+                console.log(`false`);
+            };
+            return this.arrToDo[index].check = !this.arrToDo[index].check;
         }
     }
 });
